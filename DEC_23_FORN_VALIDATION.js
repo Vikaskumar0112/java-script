@@ -3,6 +3,8 @@ let name = document.querySelector("#name").value
 let age = document.querySelector("#age").value
 let contact = document.querySelector("#contact").value
 let email = document.querySelector("#email").value
+let password = document.querySelector("#password").value
+let cpassword = document.querySelector("#cpassword").value
 
 if(name ==""){
     alert("please fill out your name")
@@ -39,10 +41,31 @@ else if(email == ""){
     document.querySelector("#email").focus()
     return false
 }
-else if ((!email.includes("@"))) {
+else if (!(email.includes("@"))) {
     alert("use @ for Validation")
     document.querySelector("#email").focus()
     return false
 }
+else if(password == ""){
+    alert("please enter password")
+    document.querySelector("#password").focus()
+    return false
+}
+else if (!(password.match(/[~!@#$%^&*({})]/))) {
+    alert("please enter aleast one special charactor")
+    document.querySelector("#email").focus()
+    return false
+}
+else if(cpassword == ""){
+    alert("please enter your conform password password")
+    document.querySelector("#cpassword").focus()
+    return false
+}
+else if(password != cpassword){
+    alert("password miss match")
+    document.querySelector("#cpassword").focus()
+    return false
+}
+
 
 }
