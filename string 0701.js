@@ -24,7 +24,7 @@ console.log(str1);
 let fname = "vikas"
 let lname = "kumar"
 
-let name = fname.concat(lname)
+let name = fname.concat(lname," ","vinod")
 
 
 console.log(name);
