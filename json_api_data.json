@@ -1,0 +1,22 @@
+{
+    "employ":[
+        {
+            "name":"vijay",
+            "age":90,
+            "contact":345899,
+            "city":"agra"
+        }
+        {
+            "name":"ajay",
+            "age":90,
+            "contact":745679,
+            "city":"bhopal"
+        }
+        {
+            "name":"amit",
+            "age":90,
+            "contact":965679,
+            "city":"indore"
+        }
+    ]
+}

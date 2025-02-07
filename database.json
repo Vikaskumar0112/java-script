@@ -1,0 +1,22 @@
+{
+    "student":[
+        {
+            "name":"vikas",
+            "age":90,
+            "contact":345679,
+            "city":"bhopal"
+        },
+        {
+            "name":"rewa",
+            "age":90,
+            "contact":345679,
+            "city":"ujjain"
+        },
+        {
+            "name":"amit",
+            "age":90,
+            "contact":345679,
+            "city":"indore"
+        }
+    ]
+}

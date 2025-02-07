@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up / Sign In Page</title>
+  <!-- <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+    .form-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    .form-container h2 {
+      text-align: center;
+    }
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .error-message {
+      color: red;
+      text-align: center;
+    }
+    .toggle-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      cursor: pointer;
+      color: #007BFF;
+    }
+    .toggle-link:hover {
+      text-decoration: underline;
+    }
+  </style> -->
+</head>
+<body>
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <h2 id="form-title">Sign Up</h2>
+    <form id="sign-up-form">
+      <input type="text" id="username" class="input-field" placeholder="Enter your username" required>
+      <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
+      <button type="submit" class="button">Sign Up</button>
+    </form>
+    <p class="error-message" id="sign-up-error"></p>
+    <span class="toggle-link" id="toggle-link">Already have an account? Sign In</span>
+  </div>
+
+  <div class="form-container" id="sign-in-container" style="display: none;">
+    <h2 id="sign-in-title">Sign In</h2>
+    <form id="sign-in-form">
+      <input type="text" id="signin-username" class="input-field" placeholder="Enter your username" required>
+      <input type="password" id="signin-password" class="input-field" placeholder="Enter your password" required>
+      <button type="submit" class="button">Sign In</button>
+    </form>
+    <p class="error-message" id="sign-in-error"></p>
+    <span class="toggle-link" id="toggle-link-signin">Don't have an account? Sign Up</span>
+  </div>
+
+  <script>
+    // Switch between Sign Up and Sign In forms
+    document.getElementById('toggle-link').addEventListener('click', function() {
+      document.getElementById('sign-up-form').reset();
+      document.getElementById('sign-up-error').textContent = '';
+      document.getElementById('form-title').textContent = 'Sign In';
+      document.getElementById('sign-in-container').style.display = 'block';
+      document.getElementById('sign-in-error').textContent = '';
+      document.getElementById('toggle-link').style.display = 'none';
+      document.getElementById('toggle-link-signin').style.display = 'block';
+      document.getElementById('sign-up-form').style.display = 'none';
+    });
+
+    document.getElementById('toggle-link-signin').addEventListener('click', function() {
+      document.getElementById('sign-in-form').reset();
+      document.getElementById('sign-in-error').textContent = '';
+      document.getElementById('form-title').textContent = 'Sign Up';
+      document.getElementById('sign-up-form').style.display = 'block';
+      document.getElementById('sign-in-container').style.display = 'none';
+      document.getElementById('toggle-link').style.display = 'block';
+      document.getElementById('toggle-link-signin').style.display = 'none';
+    });
+
+    // Sign Up Logic
+    document.getElementById('sign-up-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username && password) {
+        // Store details in localStorage
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        alert('Sign Up Successful!');
+        document.getElementById('sign-up-form').reset();
+        document.getElementById('sign-up-error').textContent = '';
+      } else {
+        document.getElementById('sign-up-error').textContent = 'Please fill out all fields.';
+      }
+    });
+
+    // Sign In Logic
+    document.getElementById('sign-in-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('signin-username').value;
+      const password = document.getElementById('signin-password').value;
+
+      // Retrieve stored details
+      const storedUsername = localStorage.getItem('username');
+      const storedPassword = localStorage.getItem('password');
+
+      if (username === storedUsername && password === storedPassword) {
+        alert('Sign In Successful!');
+        // Redirect to another page or show dashboard
+        // window.location.href = 'dashboard.html';
+      } else {
+        document.getElementById('sign-in-error').textContent = 'Invalid username or password.';
+      }
+    });
+  </script>
+
+</body>
+</html>
